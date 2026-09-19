@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101b37" />
+  <title>一日漫游邀请函</title>
+  <meta name="description" content="从同济嘉定出发，挑一条适合我们的上海一日路线。" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23101b37'/%3E%3Cpath d='M17 38c11-2 18-11 21-22 4 10 8 16 16 19-8 2-13 7-17 14-4-7-10-10-20-11Z' fill='%23f2c879'/%3E%3Ccircle cx='47' cy='16' r='4' fill='%23f8e5ae'/%3E%3C/svg%3E" />
+  <style>
+    :root { --ink:#101b37; --night:#17264c; --gold:#f2c879; --cream:#fff9ec; --mist:#e9eff8; --teal:#56d2c4; --muted:#9eacc8; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Microsoft YaHei","PingFang SC",sans-serif; color:var(--ink); background:var(--cream); }
+    .hero { min-height:440px; padding:34px 20px 52px; color:white; background:radial-gradient(circle at 78% 18%, #284675 0, transparent 34%), linear-gradient(135deg,#101b37,#1d3261); overflow:hidden; position:relative; }
+    .hero:after { content:""; position:absolute; width:540px; height:540px; border:1px solid rgba(242,200,121,.22); border-radius:50%; right:-280px; bottom:-370px; }
+    .wrap { width:min(1040px,100%); margin:auto; position:relative; z-index:1; }
+    .eyebrow { color:var(--gold); font-size:.85rem; letter-spacing:.16em; font-weight:700; }
+    h1 { font-size:clamp(2.3rem,7vw,4.8rem); line-height:1.08; margin:48px 0 18px; letter-spacing:.04em; }
+    .hero p { max-width:520px; color:#dce5f8; font-size:1.05rem; line-height:1.9; margin:0; }
+    .ticket { margin-top:30px; display:inline-flex; align-items:center; gap:12px; border:1px solid rgba(242,200,121,.55); padding:12px 16px; border-radius:999px; color:var(--gold); font-size:.88rem; }
+    main { width:min(1040px,100%); margin:-28px auto 0; padding:0 20px 64px; position:relative; }
+    .intro { border-radius:20px; padding:22px 24px; background:white; box-shadow:0 16px 40px rgba(18,37,75,.13); display:flex; justify-content:space-between; gap:24px; align-items:center; }
+    .intro strong { font-size:1.05rem; } .intro span { display:block; color:#64718a; margin-top:6px; font-size:.9rem; line-height:1.6; }
+    .marker { color:#ae7612; font-size:.86rem; white-space:nowrap; }
+    .section-title { margin:52px 0 12px; font-size:1.55rem; } .section-copy { color:#67748c; line-height:1.8; margin:0 0 24px; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .card { text-align:left; width:100%; background:white; border:1px solid #e3e8f1; border-radius:18px; padding:22px; cursor:pointer; color:inherit; font:inherit; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .card:hover,.card:focus-visible { transform:translateY(-4px); box-shadow:0 14px 30px rgba(28,53,96,.12); border-color:#e5b85b; outline:none; }
+    .number { color:#b27e1d; font-weight:800; font-size:.82rem; letter-spacing:.08em; } .card h2 { margin:8px 0 10px; font-size:1.25rem; } .card p { margin:0; color:#66738b; line-height:1.65; font-size:.91rem; }
+    .meta { margin-top:18px; padding-top:15px; border-top:1px dashed #d8e0ec; display:flex; justify-content:space-between; gap:8px; color:#40516d; font-size:.83rem; }
+    .spotlight { grid-column:span 2; background:linear-gradient(135deg,#fffdf7,#fff3d3); border-color:#efd38d; }
+    .spotlight .tag { display:inline-block; margin-left:8px; padding:3px 8px; border-radius:999px; background:#1c345f; color:#f6d88e; font-size:.74rem; }
+    .details { margin-top:50px; padding:28px; border-radius:20px; background:var(--mist); }
+    .details h2 { margin:0 0 16px; } .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; } .step b { color:#9a6912; } .step p { margin:7px 0 0; color:#58667e; font-size:.91rem; line-height:1.7; }
+    .dialog { position:fixed; inset:0; display:none; align-items:flex-end; justify-content:center; background:rgba(7,15,33,.56); padding:16px; z-index:5; } .dialog.open { display:flex; }
+    .sheet { width:min(560px,100%); background:white; border-radius:24px 24px 16px 16px; padding:28px; box-shadow:0 -10px 40px rgba(0,0,0,.22); animation:rise .24s ease-out; }
+    @keyframes rise { from { transform:translateY(28px); opacity:0; } to { transform:none; opacity:1; } }
+    .sheet .small { color:#758198; line-height:1.7; } .sheet h2 { margin:8px 0; } .actions { display:flex; gap:10px; margin-top:22px; } .actions button { border:0; border-radius:12px; padding:12px 16px; font:inherit; font-weight:700; cursor:pointer; } .primary { background:var(--ink); color:white; flex:1; } .secondary { background:#eef2f8; color:var(--ink); }
+    footer { text-align:center; color:#7a879d; padding:24px; font-size:.84rem; } .twinkle { color:var(--gold); }
+    @media (max-width:650px) { .hero { min-height:410px; } .intro { display:block; } .marker { display:inline-block; margin-top:13px; } .grid { grid-template-columns:1fr; } .spotlight { grid-column:span 1; } .steps { grid-template-columns:1fr; } .details { padding:23px; } }
+  </style>
+</head>
+<body>
+  <header class="hero"><div class="wrap">
+    <div class="eyebrow">A SMALL INVITATION · FROM JIADING</div>
+    <h1>留一天，<br>一起去漫游吧。</h1>
+    <p>不是打卡清单，也不用赶着完成什么。挑一条你有点心动的路线，剩下的交通、预约和晚饭，我来安排。</p>
+    <div class="ticket"><span class="twinkle">✦</span> 有效期：等你挑中一条路线</div>
+  </div></header>
+  <main>
+    <section class="intro"><div><strong>打开一张卡，看看这一天会长什么样。</strong><span>点选后会生成一句回信，复制给我就行。</span></div><div class="marker">共 7 个方向 · 不赶行程</div></section>
+    <h2 class="section-title">今天想把时间花在哪里？</h2>
+    <p class="section-copy">每条路线都预留了吃饭、散步和临时改变主意的空间。</p>
+    <section class="grid" aria-label="路线选择">
+      <button class="card" data-name="武康路慢走" data-message="我想选 1：武康路慢走。想边逛边喝咖啡，猫咖看当天心情！"><span class="number">01 / 城市散步</span><h2>梧桐、书店和咖啡</h2><p>武康路到安福路，慢慢走，慢慢聊。猫咖可以临时决定。</p><div class="meta"><span>步行 4-5 km</span><span>¥350-650 / 两人</span></div></button>
+      <button class="card" data-name="上博东馆" data-message="我想选 2：上博东馆和公园。想安静看点展，再慢慢走。"><span class="number">02 / 安静一点</span><h2>展馆里的下午</h2><p>上博东馆看两三个馆，留一点时间给世纪公园或陆家嘴。</p><div class="meta"><span>适合看展</span><span>周二避开</span></div></button>
+      <button class="card" data-name="苏州园林" data-message="我想选 3：苏州园林小出逃。想认真玩一天，也想喝杯茶。"><span class="number">03 / 小出逃</span><h2>去苏州，换一座城</h2><p>苏博、拙政园、平江路。把景点减到刚刚好。</p><div class="meta"><span>步行 6-8 km</span><span>需提前预约</span></div></button>
+      <button class="card" data-name="南翔古猗园" data-message="我想选 4：南翔古猗园。想轻松逛园林，也想吃小笼。"><span class="number">04 / 轻松一点</span><h2>园林、小笼和老街</h2><p>古猗园慢逛，吃完小笼去茶馆。最不需要赶路的一套。</p><div class="meta"><span>通勤 45-60 分钟</span><span>低压力</span></div></button>
+      <button class="card spotlight" data-name="远香湖和演出" data-message="我想选 5：远香湖散步加演出。想先走走，晚上看一场表演。"><span class="number">05 / 一点仪式感 <span class="tag">演出优选</span></span><h2>远香湖的傍晚，和一场演出</h2><p>环湖散步、晚饭、看场演出。离嘉定近，晚归也更从容。</p><div class="meta"><span>环湖约 3 km</span><span>节目按日期挑</span></div></button>
+      <button class="card" data-name="嘉北骑行" data-message="我想选 6：嘉北骑行和野餐。想活动一下，也想晒晒太阳。"><span class="number">06 / 动起来</span><h2>骑车穿过郊野</h2><p>从入门线路开始，野餐和田园步道作为中场休息。</p><div class="meta"><span>骑行 5-10 km</span><span>看天气出发</span></div></button>
+      <button class="card" data-name="汽车博物馆" data-message="我想选 7：汽车博物馆和安亭慢逛。想看点设计，也不想太累。"><span class="number">07 / 不怕下雨</span><h2>汽车、设计和安亭</h2><p>看完经典车，在公园或安亭老街慢慢收尾。</p><div class="meta"><span>通勤 20-30 分钟</span><span>周一避开</span></div></button>
+    </section>
+    <section class="details"><h2>不用担心的三件事</h2><div class="steps"><div class="step"><b>01 / 不赶</b><p>路线都留了空档，遇到想多坐一会儿的地方就多待一会儿。</p></div><div class="step"><b>02 / 不用做功课</b><p>场馆预约、交通和当天的餐厅，我来处理。</p></div><div class="step"><b>03 / 可以改主意</b><p>猫咖、甜品或散步，随当天的天气和心情切换。</p></div></div></section>
+  </main>
+  <footer>从同济嘉定校区出发 <span class="twinkle">✦</span> 选一条路线，再把路线编号发给我。</footer>
+  <div class="dialog" id="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title"><div class="sheet"><div class="eyebrow">你挑中了</div><h2 id="dialog-title"></h2><p class="small" id="dialog-copy"></p><div class="actions"><button class="secondary" id="close">再看看</button><button class="primary" id="copy">复制这句回信</button></div></div></div>
+  <script>
+    const dialog = document.getElementById('dialog'); let chosen = '';
+    document.querySelectorAll('.card').forEach(card => card.addEventListener('click', () => { chosen = card.dataset.message; document.getElementById('dialog-title').textContent = card.dataset.name; document.getElementById('dialog-copy').textContent = chosen; dialog.classList.add('open'); }));
+    document.getElementById('close').onclick = () => dialog.classList.remove('open');
+    dialog.addEventListener('click', e => { if (e.target === dialog) dialog.classList.remove('open'); });
+    document.getElementById('copy').onclick = async () => { try { await navigator.clipboard.writeText(chosen); } catch (_) {} const b = document.getElementById('copy'); b.textContent = '已复制，发给我吧'; setTimeout(() => b.textContent = '复制这句回信', 1800); };
+  </script>
+</body>
+</html>
